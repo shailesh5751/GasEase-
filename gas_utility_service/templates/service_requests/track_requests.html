@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Your Service Requests</h2>
+<table border="1">
+    <tr>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Submitted At</th>
+        <th>Resolved At</th>
+    </tr>
+    {% for req in requests %}
+    <tr>
+        <td>{{ req.get_request_type_display }}</td>
+        <td>{{ req.description }}</td>
+        <td>{{ req.status }}</td>
+        <td>{{ req.submitted_at }}</td>
+        <td>{{ req.resolved_at|default:"-" }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
